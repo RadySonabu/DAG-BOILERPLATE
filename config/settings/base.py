@@ -31,7 +31,6 @@ THIRD_PARTY_APPS = [
 
 CREATED_APPS = [
     "core",
-    "apps.sample_code",
 ]
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + CREATED_APPS
 
