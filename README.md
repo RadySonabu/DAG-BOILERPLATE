@@ -1,4 +1,4 @@
-# DJANGO-MICROSERVICE_BOILERPLATE
+# DJANGO-MICROSERVICE-BOILERPLATE
 
 1. Create a model
 2. `python manage.py makemigrations`
