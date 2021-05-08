@@ -4,13 +4,32 @@ A Django boilerplate to make the process of creating serializers, views, and url
 # Getting Started
 ## Prerequisites
 What things you need to install the software and how to install them
-1. Git - download here [link]https://git-scm.com/
-2. Python -download here [link]https://www.python.org/
+1. [Git](https://git-scm.com/)
+2. [Python](https://www.python.org/)
 
 
 ### CLONING 
-1. `bash git clone https://github.com/RadySonabu/DJANGO-MICROSERVICE-BOILERPLATE`
-3. Create a model
-4. `python manage.py makemigrations`
-5. `python manage.py migrate`
-6. `python manage.py viewset <name_of_the_app>` e.g "user", "blog"
+ ```bash 
+    git clone https://github.com/RadySonabu/DJANGO-MICROSERVICE-BOILERPLATE
+ ```
+### CREATING AN APP
+1. Create a folder inside of APPS
+2. Instead of using
+```python
+   python manage.py startapp <name_of_you_app>
+```
+Use
+```python
+   python manage.py startapp apps apps/<name_of_you_app>
+```
+
+3. Add it to the settings.py (config/base)
+
+# After creating a model run
+```python
+   python manage.py viewset <name_of_your_app>
+```
+to generate serializers, viewsets, and urls
+
+
+### Add the urls to the main.urls
