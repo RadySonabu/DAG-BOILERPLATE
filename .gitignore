@@ -157,6 +157,8 @@ Thumbs.db
 
 # profiling data
 .prof
-
+app/env
+app/env/*
+app/db.sqlite3
 
 # End of https://www.toptal.com/developers/gitignore/api/django
