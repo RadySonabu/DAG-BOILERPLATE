@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+    web:
+        build: .
+        command: >
+            bash -c "pip install --upgrade pip &&
+            python app/manage.py makemigrations &&
+            python app/manage.py migrate &&
+            python app/manage.py loaddata fixtures.json &&
+            python app/manage.py runserver 0.0.0.0:8000"
+        volumes:
+            - .:/app
+        ports:
+            - "8000:8000"
+        depends_on:
+            - user_db
+        links:
+            - user_db
+    user_db:
+        image: postgres
+        environment:
+            - POSTGRES_PASSWORD=K0llab0rat0r!
