@@ -1,4 +1,4 @@
-# DJANGO-MICROSERVICE-BOILERPLATE
+# DOCKER-DJANGO-MICROSERVICE-BOILERPLATE
 A Django boilerplate to make the process of creating serializers, views, and urls EASIER.
 
 # Getting Started
