@@ -1,11 +1,10 @@
 import os
-
+from decouple import config
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "%k%)qk^317j^=r%u0(2=u+n$-!k1$6&35xrpz9co$i9q$wxtum"
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
@@ -24,7 +23,6 @@ DEFAULT_APPS = [
 ]
 THIRD_PARTY_APPS = [
     "corsheaders",
-    "debug_toolbar",
     "django_filters",
     "drf_yasg",
     "rest_framework",
@@ -46,7 +44,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
