@@ -18,5 +18,6 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 10,
 }
 CORS_ORIGIN_ALLOW_ALL = True
+STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static")
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"

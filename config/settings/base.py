@@ -23,14 +23,16 @@ DEFAULT_APPS = [
     "django.contrib.staticfiles",
 ]
 THIRD_PARTY_APPS = [
+    "corsheaders",
+    "debug_toolbar",
+    "django_filters",
     "drf_yasg",
     "rest_framework",
-    "debug_toolbar",
-    "corsheaders",
 ]
 
 CREATED_APPS = [
     "core",
+    'apps.users',
 ]
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + CREATED_APPS
 
@@ -104,4 +106,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = "/static/"
+AUTH_USER_MODEL = 'users.MyUser'

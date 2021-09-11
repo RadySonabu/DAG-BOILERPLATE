@@ -118,6 +118,8 @@ celerybeat.pid
 
 # Environments
 # .env
+.vscode/**
+
 .env/
 .venv/
 env/

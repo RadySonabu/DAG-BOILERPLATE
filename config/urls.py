@@ -31,5 +31,5 @@ DEFAULT_URLS = [
 ]
 
 urlpatterns = [
-    # path("", include("")),
+    path("", include("apps.users.urls")),
 ] + DEFAULT_URLS

@@ -48,11 +48,11 @@ class Command(BaseCommand):
             with open(file_path, "w+") as file:
                 file.write(f"from ..models import  *")
                 file.write(
-                    f"\nfrom rest_framework import serializers\nfrom rest_framework import viewsets"
+                    f"\nfrom rest_framework import serializers\nfrom rest_framework import viewsets\nfrom django_restql.mixins import DynamicFieldsMixin"
                 )
                 # TODO: INPUT SERIALIZER
                 file.write(
-                    f"\n\nclass Input{m.__name__}Serializer(serializers.ModelSerializer):"
+                    f"\n\nclass Input{m.__name__}Serializer(DynamicFieldsMixin, serializers.ModelSerializer):"
                 )
                 for field in m._meta.concrete_fields:
                     if(field.get_internal_type() == 'ForeignKey'):
@@ -85,7 +85,7 @@ class Command(BaseCommand):
                 # TODO: OUTPUT SERIALIZER
 
                 file.write(
-                    f"\n\nclass Output{m.__name__}Serializer(serializers.ModelSerializer):"
+                    f"\n\nclass Output{m.__name__}Serializer(DynamicFieldsMixin, serializers.ModelSerializer):"
                 )
                 file.write(f"\n\tclass Meta:\n\t\tmodel = {m.__name__} ")
                 fields = []
@@ -102,12 +102,14 @@ class Command(BaseCommand):
             file_path = views_path + f"/{name}.py"
             with open(file_path, "w+") as file2:
                 file2.write(f"from ..models import  {m.__name__}")
+                file2.write(f"\nfrom django_restql.mixins import QueryArgumentsMixin")
                 file2.write(f"\nfrom rest_framework import viewsets")
                 file2.write(f"\nfrom ..serializers.{name} import *")
+                
                 file2.write(
                     f"\nfrom django_filters import rest_framework as filters")
                 file2.write(
-                    f"\n\n\n\nclass {m.__name__}View(viewsets.ModelViewSet):\n\tqueryset={m.__name__}.objects.select_related().all()\n\tserializer_class=Output{m.__name__}Serializer"
+                    f"\n\n\n\nclass {m.__name__}View(QueryArgumentsMixin, viewsets.ModelViewSet):\n\tqueryset={m.__name__}.objects.select_related().all()\n\tserializer_class=Output{m.__name__}Serializer"
                 )
                 file2.write(
                     "\n\tfilter_backends = (filters.DjangoFilterBackend,)"
