@@ -1,4 +1,4 @@
-# DOCKER-DJANGO-MICROSERVICE-BOILERPLATE
+# DOCKER-DJANGO-AWS-GRAPHQL-BOILERPLATE
 A Django boilerplate to make the process of creating serializers, views, and urls EASIER.
 
 # Getting Started
@@ -10,7 +10,7 @@ What things you need to install the software and how to install them
 
 ### CLONING 
  ```bash 
-    git clone https://github.com/RadySonabu/DJANGO-MICROSERVICE-BOILERPLATE
+    git clone https://github.com/RadySonabu/DAG-BOILERPLATE
  ```
 ### CREATING AN APP
 1. Create a folder inside of APPS
