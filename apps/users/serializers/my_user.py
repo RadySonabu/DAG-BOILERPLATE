@@ -2,11 +2,12 @@ from ..models import  *
 from rest_framework import serializers
 from rest_framework import viewsets
 from django_restql.mixins import DynamicFieldsMixin
+
 class InputMyUserSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
-	role_id = serializers.PrimaryKeyRelatedField(queryset = Roles.objects.select_related().all(), source="role")
+	# role_id = serializers.PrimaryKeyRelatedField(queryset = Roles.objects.select_related().all(), source="role")
 	class Meta:
 		model = MyUser 
-		fields='__all__'
+		exclude = ['groups', 'user_permissions', 'username']
 		depth=4
 	
 	def create(self, validated_data):
@@ -18,5 +19,5 @@ class InputMyUserSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 class OutputMyUserSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 	class Meta:
 		model = MyUser 
-		fields=['id', 'password',  'username', 'first_name', 'last_name', 'email', 'is_active', 'role']
+		fields=['id', 'password', 'first_name', 'last_name', 'email', 'created_at', 'updated_at']
 		depth=4

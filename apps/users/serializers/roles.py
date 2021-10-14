@@ -12,5 +12,5 @@ class InputRolesSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 class OutputRolesSerializer(DynamicFieldsMixin, serializers.ModelSerializer):
 	class Meta:
 		model = Roles 
-		fields=['id', 'active_status', 'created_by', 'created_date', 'modified_by', 'modified_date', 'role']
+		fields=['id',   'created_at', 'updated_at', 'role']
 		depth=4

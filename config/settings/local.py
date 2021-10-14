@@ -1,6 +1,6 @@
 from .base import *
 
-DEBUG = True
+DEBUG = False
 
 
 # DATABASES = {
@@ -13,12 +13,12 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'OPTIONS': {
-            'options': '-c search_path=boilerplate'
+            'options': '-c search_path=combined-agora-api'
         },
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
-        'HOST': 'satao.db.elephantsql.com',
+        'HOST': 'kashin.db.elephantsql.com',
         'PORT': '5432',
 
     }
@@ -27,12 +27,15 @@ DATABASES = {
 REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 10,
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
 }
 CORS_ORIGIN_ALLOW_ALL = True
 
 # AWS CONFIG
 
-AWS_STORAGE_BUCKET_NAME = 'asia-staticfiles-ardy'
+AWS_STORAGE_BUCKET_NAME = 'staticfiles-ardy'
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
 AWS_DEFAULT_ACL = None
